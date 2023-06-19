@@ -24,17 +24,41 @@
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
-int summaCifr(int a, int b)
+// int summaCifr(int a, int b)
+// {
+//     if (a >= b)
+//         return a;
+//     return summaCifr(a, b - 1) + b;
+// }
+
+
+// Console.Clear();
+// Console.Write("Введите 1-ое число: ");
+// int m = int.Parse(Console.ReadLine()!);
+// Console.Write("Введите 2-ое число: ");
+// int n = int.Parse(Console.ReadLine()!);
+// Console.WriteLine(summaCifr(m, n));
+
+// Задача 68: 
+// Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
+
+
+static int A(int n, int m)
 {
-    if (a >= b)
-        return a;
-    return summaCifr(a, b - 1) + b;
+    if (n == 0) return m + 1;
+    if (n != 0 && m == 0) return A(n - 1, 1);
+    if (n > 0 && m > 0) return A(n - 1, A(n, m - 1));
+    return A(n,m);
 }
 
-
 Console.Clear();
-Console.Write("Введите 1-ое число: ");
-int m = int.Parse(Console.ReadLine()!);
-Console.Write("Введите 2-ое число: ");
-int n = int.Parse(Console.ReadLine()!);
-Console.WriteLine(summaCifr(m, n));
+Console.Write("Введите число n: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write(A(n, m));
+            
+
